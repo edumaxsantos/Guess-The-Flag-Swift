@@ -48,14 +48,17 @@ class ViewController: UIViewController {
             return
         }
         var title: String
+        var message: String
         if sender.tag == correctAnswer {
-            title = "Correct"
             score += 1
+            title = "Correct"
+            message = "Your score is now \(score)"
         } else {
             title = "Wrong"
+            message = "Wrong! That's the flag of \(countries[sender.tag].uppercased())"
         }
         
-        let ac = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
         
