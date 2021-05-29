@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(scoreTapped))
+        
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
         button1.layer.borderWidth = 1
         button2.layer.borderWidth = 1
@@ -67,6 +69,14 @@ class ViewController: UIViewController {
     
     func finalMessage() {
         let ac = UIAlertController(title: "Final score", message: "You got \(score) correct out of \(askedQuestions - 1)", preferredStyle: .alert)
+        
+        ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        present(ac, animated: true)
+    }
+    
+    @objc func scoreTapped() {
+        let ac = UIAlertController(title: "Score", message: "Your score is \(score)", preferredStyle: .alert)
         
         ac.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         
